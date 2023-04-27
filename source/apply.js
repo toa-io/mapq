@@ -3,8 +3,8 @@
 const syntaxes = require('./syntaxes')
 
 /**
- * @param {mapx.rules} rule
- * @param {mapx.Scope} [scope]
+ * @param {mapq.rules} rule
+ * @param {mapq.Scope} [scope]
  * @returns {any}
  */
 function apply (rule, scope = this) {

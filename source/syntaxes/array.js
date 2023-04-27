@@ -12,7 +12,7 @@ function test (rule) {
 
 /**
  * @param {any[]} values
- * @param {mapx.Scope} scope
+ * @param {mapq.Scope} scope
  * @return {any}
  */
 function apply (values, scope) {

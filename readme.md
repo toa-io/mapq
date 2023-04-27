@@ -1,8 +1,8 @@
-# MapX
+# MapQ
 
-Object **Map**ping with JSONPath **ex**pressions.
+Object **Map**ping with JSONPath **q**eries.
 
-`async? mapx(rules: object, source: object, context?: any): object`
+`async? mapq(rules: object, source: object, context?: any): object`
 
 Map the `source` object using the mapping `rules`.
 
@@ -15,11 +15,11 @@ contains [JSONPath](https://goessner.net/articles/JsonPath/) expressions that ar
 `source` object to obtain the corresponding value for each leaf.
 
 ```javascript
-import mapx from 'mpx'
+import mapq from 'mapq'
 
 const rules = { foo: { bar: '$.a.b' } }
 const source = { a: { b: 'hello' } }
-const result = mapx(rules, source)
+const result = mapq(rules, source)
 
 console.log(result) // { foo: { bar: 'hello' } }
 ```
@@ -39,7 +39,7 @@ function increment (value) { return value + 1 }
 
 const rules = { foo: ['$.bar', increment] }
 const source = { bar: 1 }
-const result = map(rules, source)
+const result = mapq(rules, source)
 
 console.log(result) // { foo: 2 }
 ```
@@ -57,7 +57,7 @@ const rules = {
 }
 
 const source = {}
-const result = map(rules, source)
+const result = mapq(rules, source)
 
 console.log(result) // { a: 1, b: 'hello', c: ['foo', 'bar'] }
 ```
@@ -69,7 +69,7 @@ Rules may form arrays.
 ```javascript
 const rules = { foo: ['$.bar', '$.baz'] }
 const source = { bar: 'hello', baz: 'world' }
-const result = map(rules, source)
+const result = mapq(rules, source)
 
 console.log(result) // { foo: ['hello', 'world'] }
 ```
@@ -80,7 +80,7 @@ Transformations are also supported for arrays.
 const transform = (value) => value + 10
 const rules = { foo: [['$.bar', transform], ['$.baz', transform]] }
 const source = { bar: 1, baz: 2 }
-const result = map(rules, source)
+const result = mapq(rules, source)
 
 console.log(result) // { foo: [11, 12] }
 ```

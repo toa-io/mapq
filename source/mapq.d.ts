@@ -1,4 +1,4 @@
-declare namespace mapx {
+declare namespace mapq {
 
   type transformation = (value: any, source?: object, context?: any) => any
 
@@ -17,4 +17,4 @@ declare namespace mapx {
 
 }
 
-export default function (rules: mapx.rules, source: object, context?: any): object | Promise<object>
+export default function (rules: mapq.rules, source: object, context?: any): object | Promise<object>

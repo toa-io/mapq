@@ -3,21 +3,21 @@
 const { generate } = require('randomstring')
 const { timeout } = require('@toa.io/generic')
 
-const mapx = require('../')
+const mapq = require('../')
 
 it('should be', async () => {
-  expect(mapx).toBeInstanceOf(Function)
+  expect(mapq).toBeInstanceOf(Function)
 })
 
 it('should return object', async () => {
-  const result = mapx({}, {})
+  const result = mapq({}, {})
 
   expect(result).toStrictEqual({})
 })
 
 it('should ignore extra properties', async () => {
   const source = { foo: generate() }
-  const result = mapx({}, source)
+  const result = mapq({}, source)
 
   expect(result).toStrictEqual({})
 })
@@ -31,7 +31,7 @@ it('should set constants', async () => {
     }
   }
 
-  const result = mapx(rules, {})
+  const result = mapq(rules, {})
 
   expect(result).toStrictEqual(rules)
 })
@@ -40,7 +40,7 @@ describe('JSONPath', () => {
   it('should get values', async () => {
     const rules = { foo: '$.bar' }
     const source = { bar: generate() }
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: source.bar })
   })
@@ -48,7 +48,7 @@ describe('JSONPath', () => {
   it('should get nested values', async () => {
     const rules = { foo: { bar: '$.one.two' } }
     const source = { one: { two: generate() } }
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: { bar: source.one.two } })
   })
@@ -56,7 +56,7 @@ describe('JSONPath', () => {
   it('should set undefined if value not found', async () => {
     const rules = { foo: '$.bar' }
     const source = {}
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: undefined })
   })
@@ -65,7 +65,7 @@ describe('JSONPath', () => {
     const rules = { foo: ['$.bar', '$.baz'] }
     const source = { bar: 1, baz: 2 }
 
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: [1, 2] })
   })
@@ -76,7 +76,7 @@ describe('transformations', () => {
     const transform = jest.fn((value) => value + 1)
     const source = { foo: 1 }
     const rules = { bar: ['$.foo', transform] }
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ bar: 2 })
   })
@@ -91,7 +91,7 @@ describe('transformations', () => {
 
     const source = { foo: 1 }
     const rules = { bar: ['$.foo', transform] }
-    const result = await mapx(rules, source)
+    const result = await mapq(rules, source)
 
     expect(result).toStrictEqual({ bar: 2 })
   })
@@ -100,7 +100,7 @@ describe('transformations', () => {
     const transform = jest.fn(() => 1)
     const source = {}
     const rules = { bar: ['$.foo', transform] }
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ bar: 1 })
   })
@@ -111,7 +111,7 @@ describe('transformations', () => {
     const rules = { bar: ['$.foo', transform] }
     const context = generate()
 
-    mapx(rules, source, context)
+    mapq(rules, source, context)
 
     expect(transform).toHaveBeenCalledWith(source.foo, source, context)
   })
@@ -121,7 +121,7 @@ describe('transformations', () => {
     const source = { foo: 1, bar: 2 }
     const rules = { baz: [['$.foo', transform], ['$.bar', transform]] }
 
-    const result = mapx(rules, source)
+    const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ baz: [2, 3] })
   })

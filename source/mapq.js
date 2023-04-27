@@ -10,11 +10,11 @@ const { when } = require('./when')
  * @param {object} [context]
  * @returns {object | Promise<object>}
  */
-function mapx (rules, source, context) {
+function mapq (rules, source, context) {
   const target = {}
   const promises = []
 
-  /** @type {mapx.Scope} */
+  /** @type {mapq.Scope} */
   const scope = { source, context, promises, apply }
 
   run(rules, target, scope)
@@ -23,4 +23,4 @@ function mapx (rules, source, context) {
   else return target
 }
 
-module.exports = mapx
+module.exports = mapq

@@ -3,7 +3,7 @@
 const expression = require('./expression')
 
 /**
- * @param {mapx.rules} rule
+ * @param {mapq.rules} rule
  * @return {boolean}
  */
 function test (rule) {
@@ -19,7 +19,7 @@ function test (rule) {
 
 /**
  * @param {[string, function]}
- * @param {mapx.Scope} scope
+ * @param {mapq.Scope} scope
  * @return {any}
  */
 function apply ([string, transform], scope) {

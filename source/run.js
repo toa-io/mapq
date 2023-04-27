@@ -4,9 +4,9 @@ const { apply } = require('./apply')
 const { set } = require('./set')
 
 /**
- * @param {mapx.rules} rules
+ * @param {mapq.rules} rules
  * @param {object} target
- * @param {mapx.Scope} scope
+ * @param {mapq.Scope} scope
  * @returns {object | Promise<object>}
  */
 function run (rules, target, scope) {
