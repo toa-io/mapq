@@ -1,6 +1,6 @@
 'use strict'
 
-const jsonpath = require('../source/.mapx/goessner/jsonpath')
+const jsonpath = require('./jsonpath')
 
 it('should find property', async () => {
   const object = { name: 'foo' }
