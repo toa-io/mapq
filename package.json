@@ -1,0 +1,31 @@
+{
+  "name": "mapx",
+  "description": "Object Mapping with JSONPath",
+  "version": "0.1.0",
+  "main": "source/mapx.js",
+  "types": "source/mapx.d.ts",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "@toa.io/generic": "^0.8.0",
+    "@types/jest": "^29.5.1",
+    "husky": "^8.0.0",
+    "jest": "^29.5.0",
+    "randomstring": "^1.2.3",
+    "standard": "^17.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "test": "standard && jest",
+    "features": "cucumber-js",
+    "lint": "standard --fix --verbose | snazzy"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "workspaces": [
+    "."
+  ]
+}
