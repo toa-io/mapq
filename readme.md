@@ -4,7 +4,7 @@ Object **Map**ping with JSONPath **ex**pressions.
 
 `async? mapx(rules: object, source: object, context?: any): object`
 
-Map the `source` object using the `rules` mapping.
+Map the `source` object using the mapping `rules`.
 
 If any transformation returns a `Promise`, the function returns a `Promise`.
 
@@ -15,7 +15,7 @@ contains [JSONPath](https://goessner.net/articles/JsonPath/) expressions that ar
 `source` object to obtain the corresponding value for each leaf.
 
 ```javascript
-import mapx from 'mapx'
+import mapx from 'mpx'
 
 const rules = { foo: { bar: '$.a.b' } }
 const source = { a: { b: 'hello' } }

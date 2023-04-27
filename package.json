@@ -1,9 +1,21 @@
 {
-  "name": "mapx",
+  "name": "mpx",
   "description": "Object Mapping with JSONPath",
   "version": "0.1.1-dev.0",
   "main": "source/mapx.js",
   "types": "source/mapx.d.ts",
+  "author": {
+    "name": "Artem Gurtovoi",
+    "url": "https://github.com/temich"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toa-io/mapx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toa-io/mapx/issues"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
