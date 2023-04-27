@@ -20,6 +20,9 @@
     "features": "cucumber-js",
     "lint": "standard --fix --verbose | snazzy"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "standard": {
     "env": [
       "jest"
