@@ -3,7 +3,7 @@
 const { generate } = require('randomstring')
 const { timeout } = require('@toa.io/generic')
 
-const { mapx } = require('../')
+const mapx = require('../')
 
 it('should be', async () => {
   expect(mapx).toBeInstanceOf(Function)

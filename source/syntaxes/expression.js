@@ -3,7 +3,7 @@
 const jsonpath = require('./goessner/jsonpath')
 
 /**
- * @param {core.map.rule} rule
+ * @param {mapx.rules} rule
  * @return {boolean}
  */
 function test (rule) {
@@ -12,7 +12,7 @@ function test (rule) {
 
 /**
  * @param {string} expression
- * @param {core.map.Scope} scope
+ * @param {mapx.Scope} scope
  * @return {any}
  */
 function apply (expression, scope) {

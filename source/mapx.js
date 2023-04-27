@@ -1,7 +1,7 @@
 'use strict'
 
 const { when } = require('./when')
-const nodes = require('./.mapx')
+const syntaxes = require('./syntaxes')
 
 /**
  * @param {object} rules
@@ -13,7 +13,7 @@ function mapx (rules, source, context) {
   const target = {}
   const promises = []
 
-  /** @type {core.map.Scope} */
+  /** @type {mapx.Scope} */
   const scope = { source, context, promises, apply }
 
   run(rules, target, scope)
@@ -23,9 +23,9 @@ function mapx (rules, source, context) {
 }
 
 /**
- * @param {object} rules
+ * @param {mapx.rules} rules
  * @param {object} target
- * @param {core.map.Scope} scope
+ * @param {mapx.Scope} scope
  * @returns {object | Promise<object>}
  */
 function run (rules, target, scope) {
@@ -42,12 +42,12 @@ function run (rules, target, scope) {
 }
 
 /**
- * @param {core.map.rule} rule
- * @param {core.map.Scope} [scope]
+ * @param {mapx.rules} rule
+ * @param {mapx.Scope} [scope]
  * @returns {any}
  */
 function apply (rule, scope = this) {
-  for (const { test, apply } of nodes) {
+  for (const { test, apply } of syntaxes) {
     if (test(rule)) return apply(rule, scope)
   }
 
@@ -70,4 +70,4 @@ function set (target, key, value, promises) {
   }
 }
 
-exports.mapx = mapx
+module.exports = mapx
