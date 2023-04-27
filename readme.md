@@ -1,6 +1,6 @@
 # MapQ
 
-Object **Map**ping with JSONPath **q**eries.
+Object **map**ping with JSONPath **q**eries.
 
 `async? mapq(rules: object, source: object, context?: any): object`
 
