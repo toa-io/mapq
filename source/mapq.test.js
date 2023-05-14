@@ -125,4 +125,26 @@ describe('transformations', () => {
 
     expect(result).toStrictEqual({ baz: [2, 3] })
   })
+
+  it('should apply transformations for array of objects', async () => {
+    const transform = (value) => value + 1
+    const source = { foo: 1, bar: 2 }
+    const rules = {
+      baz: [
+        {
+          a: ['$.foo', transform],
+          b: ['$.bar', transform]
+        }
+      ]
+    }
+
+    const result = mapq(rules, source)
+
+    expect(result).toStrictEqual({
+      baz: [{
+        a: 2,
+        b: 3
+      }]
+    })
+  })
 })
