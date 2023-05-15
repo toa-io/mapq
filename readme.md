@@ -67,11 +67,11 @@ console.log(result) // { a: 1, b: 'hello', c: ['foo', 'bar'] }
 Rules may form arrays.
 
 ```javascript
-const rules = { foo: ['$.bar', '$.baz'] }
+const rules = ['$.bar', '$.baz']
 const source = { bar: 'hello', baz: 'world' }
 const result = mapq(rules, source)
 
-console.log(result) // { foo: ['hello', 'world'] }
+console.log(result) // ['hello', 'world']
 ```
 
 Transformations are also supported for arrays.
@@ -83,4 +83,16 @@ const source = { bar: 1, baz: 2 }
 const result = mapq(rules, source)
 
 console.log(result) // { foo: [11, 12] }
+```
+
+## Values
+
+Rules may form primitive values.
+
+```javascript
+const rules = '$.[1]'
+const source = ['foo', 'bar']
+const result = mapq(rules, source)
+
+console.log(result) // 'bar'
 ```
