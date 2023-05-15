@@ -1,7 +1,7 @@
 {
   "name": "mapq",
   "description": "Object Mapping with JSONPath",
-  "version": "0.1.0",
+  "version": "0.1.1-dev.0",
   "main": "source/mapq.js",
   "types": "source/mapq.d.ts",
   "author": {
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
-    "@toa.io/generic": "^0.8.0",
+    "@toa.io/generic": "^0.10.0",
     "@types/jest": "^29.5.1",
     "husky": "^8.0.0",
     "jest": "^29.5.0",
