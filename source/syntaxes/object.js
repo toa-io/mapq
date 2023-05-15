@@ -1,9 +1,10 @@
 'use strict'
 
+const { plain } = require('@toa.io/generic')
 const { set } = require('../set')
 
 function test (rule) {
-  return typeof rule === 'object' && !Array.isArray(rule) && rule !== null
+  return plain(rule)
 }
 
 /**
