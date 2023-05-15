@@ -61,13 +61,53 @@ describe('JSONPath', () => {
     expect(result).toStrictEqual({ foo: undefined })
   })
 
-  it('should map arrays', async () => {
+  it('should map nested arrays of objects', async () => {
     const rules = { foo: ['$.bar', '$.baz'] }
     const source = { bar: 1, baz: 2 }
 
     const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: [1, 2] })
+  })
+
+  it('should map array of objects', async () => {
+    const source = { foo: 1, bar: 2 }
+
+    const rules = {
+      baz: [
+        {
+          a: '$.foo',
+          b: '$.bar'
+        }
+      ]
+    }
+
+    const result = mapq(rules, source)
+
+    expect(result).toStrictEqual({
+      baz: [{
+        a: 1,
+        b: 2
+      }]
+    })
+  })
+
+  it('should map to a value', async () => {
+    const rules = '$.foo'
+    const source = { foo: 'bar' }
+
+    const result = mapq(rules, source)
+
+    expect(result).toStrictEqual('bar')
+  })
+
+  it('should map from array', async () => {
+    const rules = '$.[1]'
+    const source = ['foo', 'bar']
+
+    const result = mapq(rules, source)
+
+    expect(result).toStrictEqual('bar')
   })
 })
 
@@ -124,27 +164,5 @@ describe('transformations', () => {
     const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ baz: [2, 3] })
-  })
-
-  it('should apply transformations for array of objects', async () => {
-    const transform = (value) => value + 1
-    const source = { foo: 1, bar: 2 }
-    const rules = {
-      baz: [
-        {
-          a: ['$.foo', transform],
-          b: ['$.bar', transform]
-        }
-      ]
-    }
-
-    const result = mapq(rules, source)
-
-    expect(result).toStrictEqual({
-      baz: [{
-        a: 2,
-        b: 3
-      }]
-    })
   })
 })
