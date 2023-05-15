@@ -1,6 +1,5 @@
 'use strict'
 
-const { generate } = require('randomstring')
 const { timeout } = require('@toa.io/generic')
 
 const mapq = require('../')
@@ -16,7 +15,7 @@ it('should return object', async () => {
 })
 
 it('should ignore extra properties', async () => {
-  const source = { foo: generate() }
+  const source = { foo: 'bar' }
   const result = mapq({}, source)
 
   expect(result).toStrictEqual({})
@@ -39,7 +38,7 @@ it('should set constants', async () => {
 describe('JSONPath', () => {
   it('should get values', async () => {
     const rules = { foo: '$.bar' }
-    const source = { bar: generate() }
+    const source = { bar: 'baz' }
     const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: source.bar })
@@ -47,7 +46,7 @@ describe('JSONPath', () => {
 
   it('should get nested values', async () => {
     const rules = { foo: { bar: '$.one.two' } }
-    const source = { one: { two: generate() } }
+    const source = { one: { two: 'baz' } }
     const result = mapq(rules, source)
 
     expect(result).toStrictEqual({ foo: { bar: source.one.two } })
@@ -147,9 +146,9 @@ describe('transformations', () => {
 
   it('should pass source and context to transformation', async () => {
     const transform = jest.fn(() => 1)
-    const source = { foo: generate() }
+    const source = { foo: 'baz' }
     const rules = { bar: ['$.foo', transform] }
-    const context = generate()
+    const context = 'hello'
 
     mapq(rules, source, context)
 

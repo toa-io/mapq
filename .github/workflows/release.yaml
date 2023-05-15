@@ -28,7 +28,10 @@ jobs:
           fetch-depth: 0
 
       - name: Run tests
-        run: npm i && npm test
+        run: |
+          npm pkg delete scripts.prepare # disable husky
+          npm ci --omit=dev --ignore-scripts
+          npm test
 
       - name: Import GPG key
         id: gpg
