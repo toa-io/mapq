@@ -108,6 +108,15 @@ describe('JSONPath', () => {
 
     expect(result).toStrictEqual('bar')
   })
+
+  it('should should map to array', async () => {
+    const rules = ['$.foo', '$.bar']
+    const source = { foo: 1, bar: 2 }
+
+    const result = mapq(rules, source)
+
+    expect(result).toStrictEqual([1, 2])
+  })
 })
 
 describe('transformations', () => {
