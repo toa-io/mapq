@@ -3,5 +3,6 @@
 const expression = require('./expression')
 const transformation = require('./transformation')
 const array = require('./array')
+const object = require('./object')
 
-module.exports = [expression, transformation, array]
+module.exports = [object, expression, transformation, array]
